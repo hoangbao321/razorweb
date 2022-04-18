@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@using cs58_Razor_09.Models
+@{
+    ViewData["Title"] = "Home page";
+    var posts = ViewData["posts"] as List<Article>;
+
+    object a = "5";
+    var posts1 = a as string;
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div>
+    @posts1
+</div>
+<ol>
+    @foreach (var p in posts)
+    {
+        <li> @p.Created</li>
+    }
+</ol>
