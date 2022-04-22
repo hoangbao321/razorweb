@@ -1,0 +1,81 @@
+﻿@page
+@model cs58_Razor_09.Pages_Blog.IndexModel
+@using cs58_Razor_09.Models
+@using cs58_Razor_09.Helpers
+@{
+    ViewData["Title"] = "Index";
+    var post = ViewData["lists"] as List<Article>;
+    var a = new List<int>();
+
+
+
+    var Page = new PagingModel() { currentPage = Model.CurrentPage, countPages = Model.CountPage, generateUrl = (int? p, string _Search, DateTime? StartDay, DateTime? EndDay) => Url.Page("/Blog/Index", new { p = p, Search = Model.Search, StartDay = Model.StartDay, EndDay = Model.EndDay }) };
+
+}
+
+@Url.Page("/Blog/Index", new { p = 5 })
+
+<partial name="_Paging" model="Page" />
+<h1>Danh sách bài viết</h1>
+
+@*@if (post != null)
+    {
+        @foreach (var p in post)
+        {
+            <p>@p.Created</p>
+        }
+}*@
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Tạo bài viết mới</a>
+</p>
+<form method="Get">
+    <label for="tk">Tìm kiếm</label>
+    <input name="Search" id="tk" value="@Model.Search" />
+    <input type="submit" value="tìm kiếm" />
+</form>
+
+<form method="Get">
+    <label>Tìm kiếm từ ngày đến ngày</label>
+    <input name="StartDay" type="date" />
+    <input name="EndDay" type="date" />
+    <input type="submit" value="tìm kiếm" />
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                STT
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article[0].Titile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article[0].Created)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Article)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Chỉnh sửa</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Xem</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

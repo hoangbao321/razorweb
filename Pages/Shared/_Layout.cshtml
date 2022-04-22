@@ -23,6 +23,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>                       
+                        <li class="nav-item">
+                            <a class="nav-link text-dark bg-success" asp-area="" asp-page="/Blog/Index">Quản Lý Blog</a>
                         </li>
                     </ul>
                 </div>
@@ -46,5 +49,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("aaa",required:false)
 </body>
 </html>

@@ -1,7 +1,7 @@
 ﻿using System;
 using Bogus;
-using Microsoft.EntityFrameworkCore.Migrations;
 using cs58_Razor_09.Models;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace cs58_Razor_09.Migrations
 {
@@ -23,15 +23,14 @@ namespace cs58_Razor_09.Migrations
                 {
                     table.PrimaryKey("PK_articles", x => x.ID);
                 });
-            // insert data
-            // fake data dùng bogus
+
             Randomizer.Seed = new Random(8675309);
 
             var fakearticle = new Faker<Article>();
             fakearticle.RuleFor(a => a.Titile, f => f.Lorem.Sentence(5, 5));
             fakearticle.RuleFor(a => a.Created, f => f.Date.Between(new DateTime(2022, 1, 1), new DateTime(2022, 4, 18)));
             fakearticle.RuleFor(a => a.Content, f => f.Lorem.Paragraphs(1, 4));
-
+  
             for (int i = 0; i < 150; i++)
             {
                 Article article = fakearticle.Generate();
@@ -41,9 +40,9 @@ namespace cs58_Razor_09.Migrations
                         columns: new[] { "Titile", "Created", "Content" },
                         values: new object[]
                         {
-                        article.Titile,
-                        article.Created,
-                        article.Content
+                                article.Titile,
+                                article.Created,
+                                article.Content
                         }
                     );
             }

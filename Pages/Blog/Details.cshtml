@@ -1,0 +1,19 @@
+﻿@page "/Blog/XemBlog/{id:int?}"
+
+@model cs58_Razor_09.Pages_Blog.DetailsModel
+
+@{
+    ViewData["Title"] = Model.baobao.Titile;
+}
+
+<h1>@Model.baobao.Titile</h1>
+<p> @Html.DisplayFor(model => model.baobao.Created)</p>
+<hr />
+
+<p>Nội dung: @Html.Raw(Model.baobao.Content)</p>
+<hr />
+<div>
+    @*https://localhost:5001/Blog/Chinhsuabaiviet/157*@
+    <a asp-page="./Edit" asp-route-id="@Model.baobao.ID">Chỉnh sửa bài viết</a> |
+    <a asp-page="./Index">Danh sách bài viết</a>
+</div>

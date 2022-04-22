@@ -10,14 +10,11 @@ namespace cs58_Razor_09.Models
 {
     public class MyBlogContext : DbContext
     {
+        public DbSet<Article> articles { get; set; }
         public MyBlogContext(DbContextOptions options) : base(options)
         {
 
         }
-
-        public DbSet<Article> articles { get; set; }
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

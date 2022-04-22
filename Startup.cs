@@ -62,6 +62,9 @@ namespace cs58_Razor_09
 }
 /*
  * CRUD
- * dotnet aspnet-codegenerator razorpage -m 
- * 
+ * phát sinh các trang theo model Article
+ * - dc databasecontext
+ * dotnet aspnet-codegenerator razorpage -m cs58_Razor_09.Models.Article -dc cs58_Razor_09.Models.MyBlogContext -outDir Pages/Blog -udl --referenceScriptLibraries
+ *                 
  */
+
