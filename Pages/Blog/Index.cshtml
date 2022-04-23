@@ -12,7 +12,6 @@
     var Page = new PagingModel() { currentPage = Model.CurrentPage, countPages = Model.CountPage, generateUrl = (int? p, string _Search, DateTime? StartDay, DateTime? EndDay) => Url.Page("/Blog/Index", new { p = p, Search = Model.Search, StartDay = Model.StartDay, EndDay = Model.EndDay }) };
 
 }
-
 @Url.Page("/Blog/Index", new { p = 5 })
 
 <partial name="_Paging" model="Page" />

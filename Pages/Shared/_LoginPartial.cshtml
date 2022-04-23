@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using cs58_Razor_09.Models
+
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+@{ 
+    // xem User có đăng nhập hay không
+    // thuộc tính User có ở trong các ViewCshtml, PageModel, Controller
+
+}
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index">
+            Xin chào @UserManager.GetUserName(User)
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/LogOut">
+            Đăng Xuất
+        </a>
+    </li>
+</ul>
+}
+else
+{
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Đăng ký</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Đăng nhập</a>
+        </li>
+    </ul>
+}

@@ -22,6 +22,7 @@ namespace cs58_Razor_09.Pages
 
         public void OnGet()
         {
+
             var posts = (from p in myBlogContext.articles
                         orderby p.Created descending
                         select p).ToList();
