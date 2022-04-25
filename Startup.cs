@@ -79,7 +79,7 @@ namespace cs58_Razor_09
                 // Cấu hình đăng nhập.
                 options.SignIn.RequireConfirmedEmail = true;            // Cấu hình xác thực địa chỉ email (email phải tồn tại)
                 options.SignIn.RequireConfirmedPhoneNumber = false;     // Xác thực số điện thoại
-
+                options.SignIn.RequireConfirmedAccount = true;         // yêu cầu xác thực tài khoản để đăng nhập
             });
 
 
@@ -88,6 +88,14 @@ namespace cs58_Razor_09
             var mailsetting = Configuration.GetSection("MailSettings");
             services.Configure<MailSettings>(mailsetting);
             services.AddSingleton<IEmailSender, SendMailService>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Login/";
+                options.LogoutPath = "/Logout/";
+                // đường dẫn tới trang khi user bị cấm truy cập
+                options.AccessDeniedPath = "/KhongDuocTruyCap";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,7 +117,7 @@ namespace cs58_Razor_09
 
             app.UseRouting();
 
-            // Phục hồi thông tin đăng nhập (xác thực)
+            // Phục hồi thông tin đăng nhập (xác thực), login logout
             app.UseAuthentication();
             // Phục hồi thông tin về quyền của User
             app.UseAuthorization();

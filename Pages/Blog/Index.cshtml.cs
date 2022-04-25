@@ -1,4 +1,5 @@
-using cs58_Razor_09.Models;
+﻿using cs58_Razor_09.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,8 @@ using System.Threading.Tasks;
 
 namespace cs58_Razor_09.Pages_Blog
 {
+    // phải đăng nhập mới vào được
+    [Authorize]
     public class IndexModel : PageModel
     {
         private readonly cs58_Razor_09.Models.MyBlogContext _context;
