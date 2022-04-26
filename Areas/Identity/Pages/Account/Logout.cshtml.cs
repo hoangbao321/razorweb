@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,19 +25,23 @@ namespace cs58_Razor_09.Areas.Identity.Pages.Account
 
         public void OnGet()
         {
+            
         }
 
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
+            // nếu truyền Url thì sẽ đi tới trang đó còn ko thì vẫn trả lại trang LogOut
             if (returnUrl != null)
             {
                 return LocalRedirect(returnUrl);
             }
             else
             {
-                return RedirectToPage();
+                returnUrl = Url.Content("~/Privacy");
+                return LocalRedirect(returnUrl);
+                //return RedirectToPage();
             }
         }
     }

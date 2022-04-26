@@ -20,9 +20,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/LogOut">
-            Đăng Xuất
-        </a>
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+            <button type="submit" class="nav-link btn btn-link btn-danger">Đăng Xuất</button>
+        </form>
     </li>
 </ul>
 }

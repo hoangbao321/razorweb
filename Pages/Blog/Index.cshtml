@@ -5,9 +5,6 @@
 @{
     ViewData["Title"] = "Index";
     var post = ViewData["lists"] as List<Article>;
-    var a = new List<int>();
-
-
 
     var Page = new PagingModel() { currentPage = Model.CurrentPage, countPages = Model.CountPage, generateUrl = (int? p, string _Search, DateTime? StartDay, DateTime? EndDay) => Url.Page("/Blog/Index", new { p = p, Search = Model.Search, StartDay = Model.StartDay, EndDay = Model.EndDay }) };
 
